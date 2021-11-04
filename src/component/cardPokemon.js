@@ -6,7 +6,6 @@ function Card({history, card}) {
         history.push(`/pokemon/${card.name}`, {card})
         localStorage.setItem('pokemon',JSON.stringify(history.location.state.card))
     }
-
     return (
         <div onClick={pokemonprofil}>
             <div key={card.id} className={'pokemonCard'}>
