@@ -11,6 +11,7 @@ import useScreen from "../Hooks/Hooks";
 
 function Pokemon(props) {
     const screen = useScreen(window.innerWidth)
+
     const [offset, setOffset] = useState(null);
     const [search, setSearch] = useState([]);
 
