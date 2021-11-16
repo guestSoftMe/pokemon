@@ -1,9 +1,9 @@
 import './App.css';
 import React from "react";
-import Pokemon from "./components/pokemon";
-import Form from "./components/Form";
+import Pokemon from "./Components/pokemon";
+import Form from "./Components/Form";
 import {Route, Switch} from "react-router-dom";
-import Info from "./components/infoPokemon";
+import Info from "./Components/infoPokemon";
 import 'antd/dist/antd.css';
 
 function App() {

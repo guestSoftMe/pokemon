@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
+import {pokemon_link} from "../Constants/Constants";
 
 const initialState = {
     pokemonsAll: [],
     currentPage: 1,
-    fetching: true
+    fetching: true,
+    loader: false
 }
 
 export function reduserPokemon(state = initialState, action) {
@@ -13,6 +15,8 @@ export function reduserPokemon(state = initialState, action) {
             return {...state, pokemonsAll: action.poke}
         case 'FATCHING':
             return {...state, fetching: action.fet}
+        case 'LOADER':
+            return {...state, loader: action.loade}
         default:
             return state
     }
@@ -20,13 +24,15 @@ export function reduserPokemon(state = initialState, action) {
 
 let pokemonAdd = (poke) => ({type: 'POKEMON', poke})
 export let fetchingAdd = (fet) => ({type: 'FATCHING', fet})
+export let loaders = (loade) => ({type: 'LOADER', loade})
 
 export const pokemonThunk = (offset) => (dispatch) => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=25&limit=${offset}`)
+    axios.get(pokemon_link(offset))
         .then(data => {
             dispatch(pokemonAdd(data.data.results))
+            dispatch(loaders(true))
         })
-        .finally(()=>{
+        .finally(() => {
             dispatch(fetchingAdd(false))
-    })
+        })
 }
